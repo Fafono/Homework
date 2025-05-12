@@ -1,0 +1,54 @@
+# Ignore build and distribution folders
+build/
+dist/
+nbproject/
+test/
+
+# Ignore OneDrive and system files
+*.lnk
+desktop.ini
+NTUSER*
+ntuser*
+
+# Ignore other project folders and zips
+*.zip
+CT4/
+CT5/
+EventManagement/
+FoodFactory/
+Homework/
+PicturePracticeEJBModule/
+New folder*/
+AndroidStudioProjects/
+IdeaProjects/
+PycharmProjects/
+GlassFish_Serve*/
+Documentos/
+Documents/
+Pictures/
+Videos/
+Downloads/
+Favorites/
+Searches/
+Saved Games/
+AppData/
+Contacts/
+Links/
+Music/
+
+# Ignore miscellaneous files
+*.log
+*.py
+*.properties
+.android/
+.config/
+.gradle/
+.m2/
+.nbi/
+.redhat/
+.skiko/
+.vscode/
+.emulator_console_auth_token
+.gitconfig
+.lesshst
+.viminfo 
