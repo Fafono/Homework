@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <servlet>
+        <servlet-name>AddStudentServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.AddStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStatisticServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.GetStatisticServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStudentIDServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.GetStudentIDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStudentUsingNameSurnameServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.GetStudentUsingNameSurnameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStudentUsingAgeServlet</servlet-name>
+        <servlet-class>za.ac.tut.web.GetStudentUsingAgeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddStudentServlet</servlet-name>
+        <url-pattern>/AddStudentServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStatisticServlet</servlet-name>
+        <url-pattern>/GetStatisticServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStudentIDServlet</servlet-name>
+        <url-pattern>/GetStudentIDServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStudentUsingNameSurnameServlet</servlet-name>
+        <url-pattern>/GetStudentUsingNameSurnameServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStudentUsingAgeServlet</servlet-name>
+        <url-pattern>/GetStudentUsingAgeServlet.do</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <display-name>TeacherConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>TeacherResource</web-resource-name>
+            <description>Resources available to teachers</description>
+            <url-pattern>/add_student.jsp</url-pattern>
+            <url-pattern>/get_statistic.jsp</url-pattern>
+            <url-pattern>/get_student_using_name_surname.jsp</url-pattern>
+            <url-pattern>/get_student_using_id.jsp</url-pattern>
+            <url-pattern>/get_student_using_age.jsp</url-pattern>
+            <url-pattern>/AddStudentServlet.do</url-pattern>
+            <url-pattern>/GetStudentIDServlet.do</url-pattern>
+            <url-pattern>/GetStudentUsingAgeServlet.do</url-pattern>
+            <url-pattern>/GetStudentUsingNameSurnameServlet.do</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>Enable authentication of teacher</description>
+            <role-name>teacher</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>StudentConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>StudentResource</web-resource-name>
+            <description>Resources available for students</description>
+            <url-pattern>/get_statistic.jsp</url-pattern>
+            <url-pattern>/GetStatisticServlet.do</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description>Enable authentication of student</description>
+            <role-name>student</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>FRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/loginerror.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description>A teacher cann add, remove, edit, and view all students.</description>
+        <role-name>teacher</role-name>
+    </security-role>
+    <security-role>
+        <description>A student can only view all the students </description>
+        <role-name>student</role-name>
+    </security-role>
+</web-app>
