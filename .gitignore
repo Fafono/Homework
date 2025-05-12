@@ -3,6 +3,8 @@ build/
 dist/
 nbproject/
 test/
+build.xml
+web/
 
 # Ignore OneDrive and system files
 *.lnk
